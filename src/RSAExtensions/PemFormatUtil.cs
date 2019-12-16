@@ -77,10 +77,11 @@ namespace RSAExtensions
         public static string RemoveFormat(string key)
         {
             return key
-                .Replace("-----BEGIN RSA PRIVATE KEY-----", "").Replace("-----END RSA PRIVATE KEY-----", "").Replace(Environment.NewLine, "")
-                .Replace("-----BEGIN RSA PUBLIC KEY-----", "").Replace("-----END RSA PUBLIC KEY-----", "").Replace(Environment.NewLine, "")
-                .Replace("-----BEGIN PRIVATE KEY-----", "").Replace("-----END PRIVATE KEY-----", "").Replace(Environment.NewLine, "")
-                .Replace("-----BEGIN PUBLIC KEY-----", "").Replace("-----END PUBLIC KEY-----", "").Replace(Environment.NewLine, "");
+                .Replace("-----BEGIN RSA PRIVATE KEY-----", "").Replace("-----END RSA PRIVATE KEY-----", "")
+                .Replace("-----BEGIN RSA PUBLIC KEY-----", "").Replace("-----END RSA PUBLIC KEY-----", "")
+                .Replace("-----BEGIN PRIVATE KEY-----", "").Replace("-----END PRIVATE KEY-----", "")
+                .Replace("-----BEGIN PUBLIC KEY-----", "").Replace("-----END PUBLIC KEY-----", "")
+                .Replace(Environment.NewLine, "");
         }
 
         private static void AppendBody(StringBuilder sb, string key)
@@ -89,10 +90,10 @@ namespace RSAExtensions
             for (int i = 0; i < count; i++)
             {
                 var start = i * 64;
-                var end = start + 63;
-                if (end > key.Length - 1)
+                var end = start + 64;
+                if (end >= key.Length)
                 {
-                    end = key.Length - 1;
+                    end = key.Length;
                 }
                 sb.AppendLine(key[start..end]);
             }
