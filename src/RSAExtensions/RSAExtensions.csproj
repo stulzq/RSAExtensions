@@ -9,6 +9,24 @@
     <PackageProjectUrl>https://github.com/stulzq/RSAExtensions</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/stulzq/RSAExtensions.git</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>stulzq_zhiqiang li_logo.jpg</PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>$(OutDir)\$(MSBuildProjectName).xml</DocumentationFile>
+    <NoWarn>1701;1702;CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\assets\stulzq_zhiqiang li_logo.jpg">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
