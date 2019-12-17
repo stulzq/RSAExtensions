@@ -112,6 +112,7 @@ MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLGWghUU/jAMivM53r6M01dtHIQwtD
 ````csharp
 rsa.ExportPrivateKey(RSAKeyType.Pkcs8, true);//私钥
 rsa.ExportPublicKey(RSAKeyType.Pkcs8, true);//公钥
+
 ````
 
 私钥输出：
@@ -145,6 +146,7 @@ qwjEjAkSR/pla4vJIaEaA94/gJ21upZfwjUUdRXJbk6W03OfSOlmy2zIeCguV+H/
 UkMOcmBqVX/tbCQy7weCQwwHU4Dluy7xJIzrgYRXIuV+3zk2D63+LAK84+ksbL61
 zCnaG86YfYxcClOZ/revxrnd
 -----END PRIVATE KEY-----
+
 ````
 
 #### XML 导出
@@ -152,6 +154,7 @@ zCnaG86YfYxcClOZ/revxrnd
 ````csharp
 rsa.ExportPrivateKey(RSAKeyType.Xml);//私钥
 rsa.ExportPublicKey(RSAKeyType.Xml);//公钥
+
 ````
 
 私钥输出：
@@ -167,6 +170,7 @@ rsa.ExportPublicKey(RSAKeyType.Xml);//公钥
   <InverseQ>EydINmQ+aX8+2W7ZxU66P+0XSYsA2M/m7eF0cn5B+N3E2TOYgwunWqjPksyprEtNlP/puf7li/g8G5j3fQ0Xy/KrVwR2emcvCZMqpjzkYhSn9KcVHUVJg/LHb7BDVx/uSZwj9Ok2qDX73PSa91DEsIPiKPQjkVw1QJJ19wlJMiQ=</InverseQ>
   <D>MzwYbp5LYCXtI78vQ4PzO+uXFdUnpfuZHU55+vUFNSKmX3cT2GYr4yyjMBL3ITflrA5YGUis+zdP96kM9cdMumUpuFnZMWuHXY3zPZCnTaMZU5a+4c9afgMw/CvfevK92BDbDzC0LarTOQopDE1DULns6O3ym2QDWTgY/QRM44StLMEaLjNdVhLS3lMZJPrMCtk1k044RStUkL/7yiLMUYtXV+Lpy/08dyHWdXfBcakusKw8EEZZ53skFeR6mkWT51wyKmBFf7D6rfUC+e282i8OGayu79zXvA0UutmUGa1Q9eAP8qsBrc/i++qa/X3JnfBrFyEwQBfQV3kiOM3T0Q==</D>
 </RSAKeyValue>
+
 ````
 
 ### 4.2 导入
@@ -176,6 +180,7 @@ rsa.ExportPublicKey(RSAKeyType.Xml);//公钥
 ````csharp
 rsa.ImportPrivateKey(RSAKeyType.Pkcs1, "<privateKey>"); //私钥
 rsa.ImportPublicKey(RSAKeyType.Pkcs1, "<publicKey>"); //公钥
+
 ````
 
 
@@ -185,6 +190,7 @@ rsa.ImportPublicKey(RSAKeyType.Pkcs1, "<publicKey>"); //公钥
 ````csharp
 rsa.ImportPrivateKey(RSAKeyType.Pkcs1, "<privateKey>",true); //私钥
 rsa.ImportPublicKey(RSAKeyType.Pkcs1, "<publicKey>",true); //公钥
+
 ````
 
 #### PKCS#8 导入
@@ -192,6 +198,7 @@ rsa.ImportPublicKey(RSAKeyType.Pkcs1, "<publicKey>",true); //公钥
 ````csharp
 rsa.ImportPrivateKey(RSAKeyType.Pkcs8, "<privateKey>"); //私钥
 rsa.ImportPublicKey(RSAKeyType.Pkcs8, "<publicKey>"); //公钥
+
 ````
 
 
@@ -201,6 +208,7 @@ rsa.ImportPublicKey(RSAKeyType.Pkcs8, "<publicKey>"); //公钥
 ````csharp
 rsa.ImportPrivateKey(RSAKeyType.Pkcs8, "<privateKey>",true); //私钥
 rsa.ImportPublicKey(RSAKeyType.Pkcs8, "<publicKey>",true); //公钥
+
 ````
 
 #### XML 导入
@@ -208,9 +216,35 @@ rsa.ImportPublicKey(RSAKeyType.Pkcs8, "<publicKey>",true); //公钥
 ````csharp
 rsa.ImportPrivateKey(RSAKeyType.Xml, "<privateKey>"); //私钥
 rsa.ImportPublicKey(RSAKeyType.Xml, "<publicKey>"); //公钥
+
 ````
 
 ## 5. 大数据分段加密
 
-RSA算法的加密数据长度根据不同的填充算法，一般最多支持Key  modulus 相等长度的数据，如果超过这个长度将会需要对数据进行拆分加密。
+> 下文所说的“长度”均为字节长度。
+
+RSA算法的加密数据长度根据不同的填充算法，一般最多支持 Key 模长( modulus )相等长度的数据，如果超过这个长度将会需要对数据进行拆分加密。
+
+**Key 模长=KeySize/8**
+
+以下是我测试整理出来的 .NET Core 支持的填充算法的支持的加密数据长度：
+
+| 填充算法   | 最小 KeySize | 最大加密数据长度 |
+| ---------- | ------------ | ---------------- |
+| Pkcs1      | 512          | 模长-11          |
+| OaepSHA1   | 512          | 模长-42          |
+| OaepSHA256 | 1024         | 模长-66          |
+| OaepSHA384 | 1024         | 模长-98          |
+| OaepSHA512 | 2048         | 模长-130         |
+
+本组件已经封装好了分段加密，您无需关心数据长度和模长的关系，使用方法如下：
+
+
+````shell
+var encrypt = rsa.EncryptBigData(data, <填充算法>); //加密
+var decrypt = rsa.DecryptBigData(encrypt, <填充算法>); //解密
+
+````
+
+
 
