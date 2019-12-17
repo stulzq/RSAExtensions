@@ -28,7 +28,7 @@ Full range coverage test to ensure accuracy of each API.
 
 ## 3. Install
 
-从Nuget安装
+Install from nuget
 
 ````shell
 dotnet add package RSAExtensions
@@ -149,14 +149,14 @@ zCnaG86YfYxcClOZ/revxrnd
 -----END PRIVATE KEY-----
 ````
 
-#### XML 导出
+#### XML Export
 
 ````csharp
-rsa.ExportPrivateKey(RSAKeyType.Xml);//私钥
-rsa.ExportPublicKey(RSAKeyType.Xml);//公钥
+rsa.ExportPrivateKey(RSAKeyType.Xml);
+rsa.ExportPublicKey(RSAKeyType.Xml);
 ````
 
-私钥输出：
+Private Key Output：
 
 ````
 <RSAKeyValue>
