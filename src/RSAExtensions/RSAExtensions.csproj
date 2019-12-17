@@ -16,7 +16,8 @@
     <Version>1.0.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>$(OutDir)\$(MSBuildProjectName).xml</DocumentationFile>
+    <!--<DocumentationFile>$(OutDir)\$(MSBuildProjectName).xml</DocumentationFile>-->
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <NoWarn>1701;1702;CS1591</NoWarn>
   </PropertyGroup>
 
