@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9C63D3B9-C79
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{74C79274-D61B-4106-8146-DAF691B5484C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAExtensions.ConsoleApp", "sample\RSAExtensions.ConsoleApp\RSAExtensions.ConsoleApp.csproj", "{4D1A78BE-E540-495A-872F-DD4A2CEF07FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAExtensions.ConsoleApp", "sample\RSAExtensions.ConsoleApp\RSAExtensions.ConsoleApp.csproj", "{4D1A78BE-E540-495A-872F-DD4A2CEF07FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{675A2449-F02B-45EC-AF65-2434E3DB9502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAExtensions.UnitTests", "tests\RSAExtensions.UnitTests\RSAExtensions.UnitTests.csproj", "{5AB109F0-4A8A-45FC-BB62-D8C2F60974E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSAExtensions.UnitTests", "tests\RSAExtensions.UnitTests\RSAExtensions.UnitTests.csproj", "{5AB109F0-4A8A-45FC-BB62-D8C2F60974E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
