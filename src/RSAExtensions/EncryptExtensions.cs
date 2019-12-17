@@ -44,7 +44,7 @@ namespace RSAExtensions
                 pointer += splitLength;
             }
 
-            return sb.ToString();
+            return sb.ToString().TrimEnd(connChar);
         }
 
         public static string DecryptBigData(this RSA rsa, string dataStr, RSAEncryptionPadding padding, char connChar = '$')

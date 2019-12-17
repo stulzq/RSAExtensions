@@ -24,7 +24,9 @@ namespace RSAExtensions.ConsoleApp
             var data = "11111111111111111111111111111111111111111111111111111111111111111111";
 
             var encrypt = rsa.EncryptBigData(data, RSAEncryptionPadding.OaepSHA1);
+            Console.WriteLine(encrypt);
             var decrypt = rsa.DecryptBigData(encrypt, RSAEncryptionPadding.OaepSHA1);
+            Console.WriteLine(decrypt);
         }
     }
 }
