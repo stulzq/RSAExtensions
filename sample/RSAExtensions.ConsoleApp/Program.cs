@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace RSAExtensions.ConsoleApp
 {
@@ -7,7 +8,7 @@ namespace RSAExtensions.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var rsa = RSA.Create();
+            var rsa = RSA.Create(512);
             Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Pkcs1));
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Pkcs1, true));
@@ -18,6 +19,12 @@ namespace RSAExtensions.ConsoleApp
 
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Xml));
+            Console.WriteLine("-----------------------------------------");
+
+            var data = "11111111111111111111111111111111111111111111111111111111111111111111";
+
+            var encrypt = rsa.EncryptBigData(data, RSAEncryptionPadding.OaepSHA1);
+            var decrypt = rsa.DecryptBigData(encrypt, RSAEncryptionPadding.OaepSHA1);
         }
     }
 }
