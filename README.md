@@ -1,30 +1,32 @@
 # RSAExtensions
 
-## 1. 简介
+English|[中文](README-cn.md)
+
+## 1. Introduction
 
 [![Latest version](https://img.shields.io/nuget/v/RSAExtensions.svg)](https://www.nuget.org/packages/RSAExtensions/)
 
-RSAExtensions 是一个用于 .NET Core 的 RSA 算法增强扩展，它为RSA对象增添了一些扩展方法，支持的平台如下：
+RSAExtensions is an RSA algorithm enhancement extension for .NET Core. It adds some extension methods to RSA objects. The supported platforms are as follows:
 
-| 平台名称      | 支持版本号 |
-| ------------- | ---------- |
-| .NET Core     | \>=3.0     |
-| .NET Standard | \>=2.1     |
+| TargetFramework | Support version |
+| --------------- | --------------- |
+| .NET Core       | \>=3.0          |
+| .NET Standard   | \>=2.1          |
 
-功能如下：
+Features：
 
-- 提供以前Framework有的XML格式的密钥导入和导出
-- 提供对PKCS#1、PKCS#8 PEM格式导入和导出支持
-- 提供对PKCS#1、PKCS#8、XML格式的统一导入和导出
-- 提供对大数据分段加密的支持
+- Provides key import and export in the XML format that .NET Frameworks have
+- Provide support for PKCS # 1, PKCS # 8 PEM format import and export
+- Provide unified import and export of PKCS # 1, PKCS # 8, XML format
+- Provides support for big data encryption
 
-## 2. 测试
+## 2. Unit Test
 
-全范围覆盖测试，保证每个API准确.
+Full range coverage test to ensure accuracy of each API.
 
 ![image-20191216173430391](assets/unittest.png)
 
-## 3. 安装
+## 3. Install
 
 从Nuget安装
 
@@ -32,7 +34,7 @@ RSAExtensions 是一个用于 .NET Core 的 RSA 算法增强扩展，它为RSA�
 dotnet add package RSAExtensions
 ````
 
-## 4. 使用
+## 4. API
 
 ````csharp
 using System.Security.Cryptography;
@@ -40,29 +42,29 @@ using System.Security.Cryptography;
 var rsa=RSA.Create();
 ````
 
-### 4.1 导出
+### 4.1 Export
 
-#### PKCS#1 导出
+#### PKCS#1 Export
 
 ````csharp
-rsa.ExportPrivateKey(RSAKeyType.Pkcs1); //私钥
-rsa.ExportPublicKey(RSAKeyType.Pkcs1); // 公钥
+rsa.ExportPrivateKey(RSAKeyType.Pkcs1); 
+rsa.ExportPublicKey(RSAKeyType.Pkcs1);
 ````
 
-私钥输出：
+Private Key Output：
 
 ````
 MIIEpAIBAAKCAQEAv4pVuabfkk1NxEpIz4GYMpG69hyJDXAFJAIuUP3qCIhq081KRwrWW+0qQZp6MMTHHA/O+rHHTR6vfGBOo6yxcs9c4QCbnt/RhQ+bOmLizTJURiFrbgFU9q8dlpJ8OaoSBE3M2dY6wMhck+vEGSr1w7Fm+wH+IPPyKfNynPDYs3rKzNyHJfre62Vf23tB/Zd+7UC0PAEing7uERZdrRfloy95v8o2kVBIk4v2YUjEpLaMDbytBo++wMbyTHqsHtJKlCfxAZ+sb7VKQx8JlNEMals4k8gwjCTtoum34jgscb7CQ1aleAskTrQO2zkQINssrN/sr3WlEZ4ZdNXXVb/JhQIDAQABAoIBAF5o4i47CXIEdnNtJgxZ1Vn/qMbMc+VStMX16Tx0m1mPXBB/3L+9oMD42l4xtU66f2XeiOfanuDtYhQNKFXWtjRf72jcMtiRe6V5dsrFmQMJbq6OpHQ5ZdadpBjmpSKLKIxEiNdKl/UUDUW/7Q12tmK524eXiNpXQ6LX40NmF3oHDwMb7ZGnynFBKdA4ZDZWcVpL1eGY9xTJnpAmLRsI4UXBVeSIKZYZAo4I4FhvWr/mkESiWhBGCGrFMQB75t1x6wTqHPBoWjo9HJrSW66tbEeIdwNbpxzlaYqcOMd+Uk6P38lCE5J6rxRCMXjvehEqZmAYswfMNS5a5o2a/xEHElUCgYEA4NTyPS+aQDP9Vu8fpsbCyfxiPLSam9JUJm2ON3/0C6uomYVHnL72AgM7srmmQB4cA6bbvscjB5oB504bQ73ppi56SFnvjhQckCAtU0VPTtOVSUYBOQGvhCY0Lr+AJHCKYCVEZEWdGFObVTApA+QXwHlpheSe+fuMZkIjEiuZX2cCgYEA2hfoopk1b6RNbBvp9X1TfiZYW/x6Jrs9ebr3z08lawtLeSJAXPS37XqYgVUTMXxs7mcIP7AHmGuFlu9nOA6sVF1E2C1I3f6YMH8OaZCiH0/e3swqyTkYyiHBmCnh2lWGVyf8jK+OF0Y9KI+omGiyFiPTco6VS6Q16Ozd/NJK+DMCgYEAtjB5V9GiSpKWoYLGgEwifrFRHeYwP0LSRA2VKC48odRpnHYfUMqB6aGbF7pPGTgM9XyaJ1+RaFCJaFmnyF413x9cohKXB+gOOVCJyiepG7RjDex3gy11gD3BHXy7J0w3JbAtWp/6rELb5c1P/0IvaR45v3FCzknkPN0tNEU2VNMCgYEAtlOIm+6jurrMMxY/CImGtI7QDc7MO/cLFOqW44xSRuRBa3qT/mJkJbf5KR57lkJkOwaN4diC8QzquN1aGIZD0Z/Lv0JUiaqfhuOho+VTdAPs2awsFN+T9uAzncdd1o7raY+3VdIqYxDIblFzbD8Squm2iy3iaENXAmyLxSH1pPsCgYAXZincMY50iTmF9qYaS9xs44d3riKRQpty97W+igW5MqFMmmajfy8QShVliG1cU10Hsvz0hAZ6SK5gl+Zp6CHrveuEr69+aee6Xjp3hiJKCEiId9ahCpr8EBPWYTi22azBzgGiXseqMEI2UR9SS6K7OZ2TRNwWOERuBsabERZQhQ==
 ````
 
-#### PKCS#1 PEM 导出
+#### PKCS#1 PEM Export
 
 ````csharp
-rsa.ExportPrivateKey(RSAKeyType.Pkcs1,true);//私钥
-rsa.ExportPublicKey(RSAKeyType.Pkcs1,true);//公钥
+rsa.ExportPrivateKey(RSAKeyType.Pkcs1,true);
+rsa.ExportPublicKey(RSAKeyType.Pkcs1,true);
 ````
 
-私钥输出：
+Private Key Output：
 
 ````
 -----BEGIN RSA PRIVATE KEY-----
@@ -94,27 +96,27 @@ lABg9PGeOzUZSgAVxYzXhJ2kkMtj8NhVqRvAEegjKc/tML6SDJ4coQ==
 -----END RSA PRIVATE KEY-----
 ````
 
-#### PKCS#8 导出
+#### PKCS#8 Export
 
 ````csharp
-rsa.ExportPrivateKey(RSAKeyType.Pkcs8);//私钥
-rsa.ExportPublicKey(RSAKeyType.Pkcs8);//公钥
+rsa.ExportPrivateKey(RSAKeyType.Pkcs8);
+rsa.ExportPublicKey(RSAKeyType.Pkcs8);
 ````
 
-私钥输出：
+Private Key Output：
 
 ````
 MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLGWghUU/jAMivM53r6M01dtHIQwtDlDhfNLot5keKXRA0PD/yZ3ZZoi7W1ffvyfcuw2Db8nTGGIThFfESi7eyQdrLWqC7x8MppRtL6pYyercyApC4UhFBLTF4oUX/vecK9bHw/SuQGJtDfilZIxIfNZWpVrYpzEyAWpI6ix+pUlCA5LM9q3C6JbLsiMEvX3ypafoYUeOwx4ydEn3NwoR8EpeLzi3OHfcvo+m4yOUrLZXlMhDnMgPwyew4TOW/NsqaBvJJ+9r5hF/dcEQmpA8uvO6HJU7pClbwm0QjjjKdC/r//MHuiOFdv5b5bU0MJQGJ09tEWkEfUr/TqI2wZm/hAgMBAAECggEBAMVXX32YI3ZfqZ/LGLRD1TkQxc+/jS9R0uB3PDwjF/pSaM9Ih54Cd9WqJ7bp2upspLgUcYXldR+SbXLDviUWCxyyrmSPH8S12mUZn4dJXj2YTW7TXUkrvMZGol4i3gAbxmY4y3hslqqBrkOLT6Pj1tTqXQxYS9IbR24kExe9XLtIm/+3VcXRlW7AT2TZk1TRSjYB5OPmlYoPdQEZYk4ZL0NUNj1+HvQoeHX+b1iXJ08bP+KuTnJ+zxe6WG0x8x1cCpwOwGvEqMQ2SSyJihxw0969hPwwyeDDEWxkjaZdQt4I+aYE4KvLR75ixfkk6u5cknidmZjY0OCR2iLHbR40D/0CgYEA46+zjaa2cJEo1+7c8JSZHf+8/NAWAbo388caBIHlQ3tWDGVKbD0V+PsJPU3ZCZfIM0K1vBY0G/Ss/Pdn2CLVQwHHaVRMSAlpOdwzQdiao8dkT1B3zcVlzbInKbsc06C/3NCQZ+NKi1P2rlJ8u7tBq2Phbltwzu/KEfNe4vD2n7cCgYEA5Fr8WylpAF4o0LoOX1nZy4swvyOpG9a9yM9qilHeUVveIC7hEgNNe6kuasvmunPdF/8jOlcit2pBdg85Xu76h3g+AWK5cwnWwojeI3msAXpnej/VI5NkNGeTbJB64sX6PpmPvhMwApS6RRqpGttQ+qcO6lx6Vn5FF+jP8NxmvScCgYBC0nQd5Imyq8eS6BWLvfDaLw4mHGP5CdAWCZ8HJ6BDl9T/OlMHRT5HnlVt2oUSHaux76gqlVGhysNiUrH1avOwALunnAfvNGPfiVK5xnpMCt7TsEgY6hAguGJqCvJA4fKtOcDH3JsqHPBO5QKajjCNvniQzOFkuldRwV1duV6ILQKBgHrngZVrJ0l8ZElbKmslh/RmWPk3L0h9fq36/OOvhpGReW8m7BpuzqA1AXeXgPpva9sDhilbRqMjPFJXhVBUHWEWVYEXaqrA6+bOFYlQbkRpZhJFEulP5gnSiWVQKeOuHK7epZ/u4dMxy0NwQv3idqZBjeSTm4C7+2IP+wMvDNjXAoGBANM9wm6iiZOqZTCdMh/bnRDkChFTr8uLmbu5dtG8iXkGDhq0gX73GRrg4YL3R9oGSG/95zp5KThD94eAxZR1jrIChze77V6Y1urOMruUiluFIokoI94xUb7oh988yG2RSHzWQ3YzOGV1KqIf05j9JJvXZYcjUmB5yFWzPZVmDiwi
 ````
 
-#### PKCS#8 PEM导出
+#### PKCS#8 PEM Export
 
 ````csharp
-rsa.ExportPrivateKey(RSAKeyType.Pkcs8, true);//私钥
-rsa.ExportPublicKey(RSAKeyType.Pkcs8, true);//公钥
+rsa.ExportPrivateKey(RSAKeyType.Pkcs8, true);
+rsa.ExportPublicKey(RSAKeyType.Pkcs8, true);
 ````
 
-私钥输出：
+Private Key Output：
 
 ````
 -----BEGIN PRIVATE KEY-----
@@ -169,71 +171,71 @@ rsa.ExportPublicKey(RSAKeyType.Xml);//公钥
 </RSAKeyValue>
 ````
 
-### 4.2 导入
+### 4.2 Import
 
-#### PKCS#1 导入
+#### PKCS#1 Import
 
 ````csharp
-rsa.ImportPrivateKey(RSAKeyType.Pkcs1, "<privateKey>"); //私钥
-rsa.ImportPublicKey(RSAKeyType.Pkcs1, "<publicKey>"); //公钥
+rsa.ImportPrivateKey(RSAKeyType.Pkcs1, "<privateKey>"); 
+rsa.ImportPublicKey(RSAKeyType.Pkcs1, "<publicKey>"); 
 ````
 
 
 
-#### PKCS#1 PEM 导入
+#### PKCS#1 PEM Import
 
 ````csharp
-rsa.ImportPrivateKey(RSAKeyType.Pkcs1, "<privateKey>",true); //私钥
-rsa.ImportPublicKey(RSAKeyType.Pkcs1, "<publicKey>",true); //公钥
+rsa.ImportPrivateKey(RSAKeyType.Pkcs1, "<privateKey>",true);
+rsa.ImportPublicKey(RSAKeyType.Pkcs1, "<publicKey>",true); 
 ````
 
-#### PKCS#8 导入
+#### PKCS#8 Import
 
 ````csharp
-rsa.ImportPrivateKey(RSAKeyType.Pkcs8, "<privateKey>"); //私钥
-rsa.ImportPublicKey(RSAKeyType.Pkcs8, "<publicKey>"); //公钥
+rsa.ImportPrivateKey(RSAKeyType.Pkcs8, "<privateKey>"); 
+rsa.ImportPublicKey(RSAKeyType.Pkcs8, "<publicKey>"); 
 ````
 
 
 
-#### PKCS#8 PEM 导入
+#### PKCS#8 PEM Import
 
 ````csharp
-rsa.ImportPrivateKey(RSAKeyType.Pkcs8, "<privateKey>",true); //私钥
-rsa.ImportPublicKey(RSAKeyType.Pkcs8, "<publicKey>",true); //公钥
+rsa.ImportPrivateKey(RSAKeyType.Pkcs8, "<privateKey>",true); 
+rsa.ImportPublicKey(RSAKeyType.Pkcs8, "<publicKey>",true); 
 ````
 
-#### XML 导入
+#### XMLImport
 
 ````csharp
-rsa.ImportPrivateKey(RSAKeyType.Xml, "<privateKey>"); //私钥
-rsa.ImportPublicKey(RSAKeyType.Xml, "<publicKey>"); //公钥
+rsa.ImportPrivateKey(RSAKeyType.Xml, "<privateKey>"); 
+rsa.ImportPublicKey(RSAKeyType.Xml, "<publicKey>"); 
 ````
 
-## 5. 大数据分段加密
+## 5. Big data  encryption
 
-> 下文所说的“长度”均为字节长度。
+> The "length" referred to below is the length in bytes.
 
-RSA算法的加密数据长度根据不同的填充算法，一般最多支持 Key 模长( modulus )相等长度的数据，如果超过这个长度将会需要对数据进行拆分加密。
+The length of the encrypted data of the RSA algorithm is based on different padding algorithms. Generally, it supports data of equal Key modulus length. If the length exceeds this length, the data will be split and encrypted.
 
-**Key 模长=KeySize/8**
+**Key  modulus length=KeySize/8**
 
-以下是我测试整理出来的 .NET Core 支持的填充算法的支持的加密数据长度：
+The following are the supported encrypted data lengths of the padding algorithms supported by .NET Core that I tested and sorted out:
 
-| 填充算法   | 最小 KeySize | 最大加密数据长度 |
-| ---------- | ------------ | ---------------- |
-| Pkcs1      | 512          | 模长-11          |
-| OaepSHA1   | 512          | 模长-42          |
-| OaepSHA256 | 1024         | 模长-66          |
-| OaepSHA384 | 1024         | 模长-98          |
-| OaepSHA512 | 2048         | 模长-130         |
+| Padding    | Minimum  KeySize | Maximum encrypted data length |
+| ---------- | ---------------- | ----------------------------- |
+| Pkcs1      | 512              | modulus length-11             |
+| OaepSHA1   | 512              | modulus length-42             |
+| OaepSHA256 | 1024             | modulus length-66             |
+| OaepSHA384 | 1024             | modulus length-98             |
+| OaepSHA512 | 2048             | modulus length-130            |
 
-本组件已经封装好了分段加密，您无需关心数据长度和模长的关系，使用方法如下：
+This component has been packaged with segmented encryption. You do not need to care about the relationship between the data length and the module length. The usage method is as follows:
 
 
 ````shell
-var encrypt = rsa.EncryptBigData(data, <填充算法>); //加密
-var decrypt = rsa.DecryptBigData(encrypt, <填充算法>); //解密
+var encrypt = rsa.EncryptBigData(data, <Padding>); 
+var decrypt = rsa.DecryptBigData(encrypt, <Padding>); 
 ````
 
 
