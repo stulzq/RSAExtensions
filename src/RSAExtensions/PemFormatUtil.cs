@@ -10,28 +10,22 @@ namespace RSAExtensions
     {
         public static string GetPublicKeyFormat(RSAKeyType type, string publicKey)
         {
-            switch (type)
+            return type switch
             {
-                case RSAKeyType.Pkcs1:
-                    return GetPkcs1PublicKeyFormat(publicKey);
-                case RSAKeyType.Pkcs8:
-                    return GetPkcs8PublicKeyFormat(publicKey);
-                default:
-                    throw new Exception($"Public key type {type.ToString()} does not support pem formatting.");
-            }
+                RSAKeyType.Pkcs1 => GetPkcs1PublicKeyFormat(publicKey),
+                RSAKeyType.Pkcs8 => GetPkcs8PublicKeyFormat(publicKey),
+                _ => throw new Exception($"Public key type {type.ToString()} does not support pem formatting.")
+            };
         }
 
         public static string GetPrivateKeyFormat(RSAKeyType type, string privateKey)
         {
-            switch (type)
+            return type switch
             {
-                case RSAKeyType.Pkcs1:
-                    return GetPkcs1PrivateKeyFormat(privateKey);
-                case RSAKeyType.Pkcs8:
-                    return GetPkcs8PrivateKeyFormat(privateKey);
-                default:
-                    throw new Exception($"Private key type {type.ToString()} does not support pem formatting.");
-            }
+                RSAKeyType.Pkcs1 => GetPkcs1PrivateKeyFormat(privateKey),
+                RSAKeyType.Pkcs8 => GetPkcs8PrivateKeyFormat(privateKey),
+                _ => throw new Exception($"Private key type {type.ToString()} does not support pem formatting.")
+            };
         }
 
         public static string GetPkcs1PrivateKeyFormat(string privateKey)

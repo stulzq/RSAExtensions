@@ -17,19 +17,13 @@ namespace RSAExtensions
         /// <returns></returns>
         public static string ExportPrivateKey(this RSA rsa, RSAKeyType type, bool usePemFormat = false)
         {
-            var key=string.Empty;
-            switch (type)
+            var key = type switch
             {
-                case RSAKeyType.Pkcs1:
-                    key = Convert.ToBase64String(rsa.ExportRSAPrivateKey());
-                    break;
-                case RSAKeyType.Pkcs8:
-                    key = Convert.ToBase64String(rsa.ExportPkcs8PrivateKey());
-                    break;
-                case RSAKeyType.Xml:
-                    key = rsa.ExportXmlPrivateKey();
-                    break;
-            }
+                RSAKeyType.Pkcs1 => Convert.ToBase64String(rsa.ExportRSAPrivateKey()),
+                RSAKeyType.Pkcs8 => Convert.ToBase64String(rsa.ExportPkcs8PrivateKey()),
+                RSAKeyType.Xml => rsa.ExportXmlPrivateKey(),
+                _ => string.Empty
+            };
 
             if (usePemFormat && type != RSAKeyType.Xml)
             {
@@ -48,17 +42,13 @@ namespace RSAExtensions
         /// <returns></returns>
         public static string ExportPublicKey(this RSA rsa, RSAKeyType type, bool usePemFormat = false)
         {
-            var key = string.Empty;
-            switch (type)
+            var key = type switch
             {
-                case RSAKeyType.Pkcs1:
-                case RSAKeyType.Pkcs8:
-                    key = Convert.ToBase64String(rsa.ExportRSAPublicKey());
-                    break;
-                case RSAKeyType.Xml:
-                    key = rsa.ExportXmlPublicKey();
-                    break;
-            }
+                RSAKeyType.Pkcs1 => Convert.ToBase64String(rsa.ExportRSAPublicKey()),
+                RSAKeyType.Pkcs8 => Convert.ToBase64String(rsa.ExportRSAPublicKey()),
+                RSAKeyType.Xml => rsa.ExportXmlPublicKey(),
+                _ => string.Empty
+            };
 
             if (usePemFormat && type != RSAKeyType.Xml)
             {

@@ -31,6 +31,8 @@ namespace RSAExtensions
                 case RSAKeyType.Xml:
                     rsa.ImportXmlPrivateKey(privateKey);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
 
@@ -58,6 +60,8 @@ namespace RSAExtensions
                 case RSAKeyType.Xml:
                     rsa.ImportXmlPublicKey(publicKey);
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
     }
