@@ -7,14 +7,14 @@ namespace RSAExtensions.UnitTests
     public class ImportKeyExtTests
     {
         [Fact]
-        public void ExportPkcs1PrivateKey_WithoutPEM_ShouldBeOk()
+        public void ImportPkcs1PrivateKey_WithoutPEM_ShouldBeOk()
         {
             var rsa = RSA.Create();
             rsa.ImportPrivateKey(RSAKeyType.Pkcs1, "MIIEpAIBAAKCAQEAwutJA3T4/th/PCOv7ITtx1ESBSEkTplsGiIO/CY9tevb0lxQMW9TIWGdi/0Z72Pn8c9QFG+CSo+ye2ncrgl/ubm3Rato94nQarDDsfomKLcQeMFBE6I+qLZCjYriWxgA2xVF6px3XZd4yZh37ZTFDvAWFxI3dBXt8NrNyL8FCQ1d8viY6VmpD8+qUwYKlry48xCTxOrrvev73SFrnJU3owvMFkxzXn7tTEj0Jr2wHSU9m42lGNcFuvSQgL1OdZbn20SDDGQfXMyFW+B4twLkI2ZO2s5lLXaQKbZA3Z4puGQooY/NJh8mKDtVh3+UlKl3jH3ZIbFmAhwT0LLebVmU9QIDAQABAoIBAQCXj7n7PSYriw4MJjex8n6tYAViBa4ki7l57Ie4WsfbQCVyQaN9fPGn4C5P3qMe+JEu/iNncHlgHrIKsnsMvIgbUyQFwU3iRL/RZdcU+cxYFlhxfNtsN9j++JFxW8+8Q0LPF5CA598M4C3km3CNRQOhJOAYWmrSEgctJAWlFZsFuIkUpxzhXOK94UPLedkYSUZPxyeXOhW8IwUJiNJ+T4VtVT7Nwy/+Z8LfL8cB26hicHixlHqRlwCQWb72UWwVupN5P/P6J9ApYEev560+zBk058FCaIGsZ8dlRA5QPxUt4H6xZfvUhE/Lr/wMsT9poAD+RXPuz8ga1e9Zx+ldlewVAoGBAMrQa2qKR6mUc7Mmk1oWNDZSBYzxwfEQWWfmh0L+2/t+jvxLQs+iv3w3UR5Q+oQys9ejqbK/pgMkBapSpTboJ6nUXPf8/+QG87QWuMxvH2b4dW7wpxn6FjrTdUOYGATqYV9lXkdFccoRFOds5IK3SkngArUdf87E3V/Oib9ZJzybAoGBAPYI2DJSlSt9fT5pBRiCz+dAoH0DpmJ7AsPi1wFCnBBeAUJq6QRqXvntIeHaeKJtmyd5UZtrO8ewydFqwLGPyEPrq0xqKjO5O4gj1hkmoV9ppChhQ+xQgtyjeZ9+X+bRct2kR65dn+ZZ6l0ZuuoF2GA0igowQKWmI3Lts/loumWvAoGAMUtxIEcV3fDYIk4Y+Id3D1DmSnikU+xOXsOYUr9RRpJfPJEqXv9GnXFwhPbXvPP55ErCP1D3j8HcoqZNw8evhEa6hgf3RjwuVbJEHmRP9J4lJN7XLqgraQbmdJRuGhvBqQchYB9P5fY653j/HYphQw1wewb9fos450VzE5AeyksCgYEAmvxPVMP4/AB9GQeHEj21QfPQJXBbK8ZZo5QN5NlU/mp5WKGIUCPB2KaspV2+iHOLPX6LDeCrM8wGFkmtQS1V9pNKwURPeW3CNqx8fjN7jGM76cP7ya2eAedpAjPVrc1bEoweK5UG2VDi9erzd+BewZvXKTvkPXU+93MN4Js8cDkCgYAlp7Zupzd71zVAE8xdroBq1+D+TPZxWVyS9UCWNjuq++OFlBbevVyoBuV8QE3aF/8O6VgWIwrkopUVC8jCtXCduN+qalWLhAO2M+Y8f/xn3/d2KD3yt/gBOiHNRDZTi9H8+3CO+kf++s6MjeRVtPdY0l1ClRZ11MmJR97IFtLP7w==");
         }
 
         [Fact]
-        public void ExportPkcs1PrivateKey_WithoutPEM_ShouldBeExp()
+        public void ImportPkcs1PrivateKey_WithoutPEM_ShouldBeExp()
         {
             var rsa = RSA.Create();
             Assert.Throws<FormatException>(() => rsa.ImportPrivateKey(RSAKeyType.Pkcs1,
@@ -22,7 +22,7 @@ namespace RSAExtensions.UnitTests
         }
 
         [Fact]
-        public void ExportPkcs1PrivateKey_WithPEM_ShouldBeOk()
+        public void ImportPkcs1PrivateKey_WithPEM_ShouldBeOk()
         {
             var rsa = RSA.Create();
             rsa.ImportPrivateKey(RSAKeyType.Pkcs1, @"-----BEGIN RSA PRIVATE KEY-----
@@ -55,14 +55,21 @@ eHySyXvTRNnOoqtl/H7ZGZMpJu/Qn+nJcFl2DECoJSrGBZyzCBhDpw==
         }
 
         [Fact]
-        public void ExportPkcs8PrivateKey_WithoutPEM_ShouldBeOk()
+        public void ImportPkcs8PrivateKey_WithoutPEM_ShouldBeOk()
         {
             var rsa = RSA.Create();
             rsa.ImportPrivateKey(RSAKeyType.Pkcs8, "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDvOzxVDfg1BzMyvIdA3iDISBdCr8m+wY7ccFqcna/BvWAKvnWjY3zFu0Gpy2xrQvuSLtFXzUkFJrrru7stF5IeJ11QUjiiBlpv35crOMxA7NA4d+bteQrgQhsypEoCyRs/biXLoK4RQrGUAy+X1qRPyjJHO4cFMYcWcZPgQCLy2MN31VTYkeP1k0r7UGPJBKjm/ZGCTK8WeE6nWyuqh6WXjNToea1fFWjaOMzzbjrV/d1pq9i3N7H0KXgMVp7hPm8m2CsCXmER0DqueU8DIhbKqVXg33kYakxevxo8oGM2FelU45ZW7M/dv4+KtIBVKH4h7c7/4Bs0lo8tNJ1+T4lJAgMBAAECggEBAJ0g1gazbzQ9L2aCp392pieGGikF1seA0Dl/XjSB6Z+hp8RGxnNzc89Xp9BDOUnWK/Ae6gb2YaCNiLYujskWMzW0+zg3WNUqwRm7zMlpu9Zk9HoyXq3ZE8iqAr0nZSkhN9FYomB1f/78RDCISyk6pJ93mcBpm8xQdH7MSKlA1vOTINJPcMxfMfZVjDXKoeM3cVYOkFT6+T+LEe1sM0buYyh/ovcVmnh67rEuu6oHGQJY51tC25kZ1J+Z+eaMM9kTtIOsYFUNs0AFyo8WhgANzCAUovsq1Or7VU7rOeLGjEHJYZPOwTH7hDDXEH4rUaYOboTHYT0jdFtq/JNMy/xFu2UCgYEA/ksdQIH9ZsmE+Dlfn4lA7E4BTb5xOpSE5hx4Jja4xeIYPycPbC46SgwWwGIwuZespHH184e+7ZP6410DzGkpNTVOzqRLNfuJF+CdHSU/J2BLHr+L8ZttgGDXU+EhObn+MOcGNzuakr0Ez0iWVWf5nBvhYxoBTsQi2HD17Uliu38CgYEA8NY+iNiihcNDGh0jBFZzkfuDq3JJ6AYyv/hnqLKz0bi1tGvZL4htUKF16AvvCVN6aLqnlkP2pgY1StKaIiknSmW3jyMAIRpsQVylw9CsP8IAnGnLeSH1CLAnUpBsv8asau9n9GP8lEz8zifYDO6lS6PM4XvyBe0g39jZWGCLPzcCgYB3ZGj9ioqhIeiOatGco+KZkB5IlCuxZ13mdGNs/bBPKFJeBEbXcfToIzjjZradzLrAEsl5Z7ia7ymSam+IH6+7TaYMm1K8q7a4QTtDHePC5xEeBKz96Q3GgrFWrpLc+ZiA+VcPw6pVTu3dLKV4v/KP+v8dem42vxvlJ1Qv7o6unQKBgDpYXPwAJ5dqT6ZS6rnRS9xQ53wwivEYF1Fkl5BKAsBLFFIqUopubbU7+HmH8pf6zkvy9Ei2HFnqZRzEWqzt9WPTsp2NqClc4l8PV+VRd3lWwZkjFDU7YcaCDnS1InNvaTPa3f9Z/cXbxN8YzgGMCyWBAFCcG20OHom8WiNL+FAPAoGBAI8lN6F4LJIOIMFN38bqLPsHoHjbfIYdkOL+2NP1guf9kNwRken+vDfeqiw8QBPWzIXkmVfKuTDpG4m4ebKrClJymGN15XGsjl2r0Q1Pu59/ER5fpNKVq5yu9wFL/WrbIHrU78zrS3SGD7rh3oaf/kOXZfr0mFTaetiC/CNIs592");
         }
 
         [Fact]
-        public void ExportPkcs8PrivateKey_WithoutPEM_ShouldBeExp()
+        public void ImportPkcs8PublicKey_WithoutPEM_ShouldBeOk()
+        {
+            var rsa = RSA.Create();
+            rsa.ImportPublicKey(RSAKeyType.Pkcs8, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlvWOtryDdzhcS+5Pk5iFbaiQwdNfJOrx/r2+Uov07FkGB2r9j6wkr2ulqBkCnMR+1sOgvAHWDV8NOBz4iJoJDjIzp7xZrQH6YuIjMqMZQ7rdCHfflCguh78imgnCh94bxwnBbK5MeSMtN4EmsMgUHvtI4Ab6ZwR3ldJJRbbua+BFwcHV4sJLGHooK9UP0egBEySQ28cDJC4b5Msi6Iw6eSPsdnfdHeiKo1owCKK9SzGhFeO6C2e3yuRfmT+Q9CkVoYFPBkfPEK4WSIn1T6orhtCn8risoZQa/D5Q04FL44encN/6LSMYyS+nTQA05/pXkNFVaPtAC9jK4Yo6kug0sQIDAQAB");
+        }
+
+        [Fact]
+        public void ImportPkcs8PrivateKey_WithoutPEM_ShouldBeExp()
         {
             var rsa = RSA.Create();
             Assert.Throws<FormatException>(() => rsa.ImportPrivateKey(RSAKeyType.Pkcs8,
@@ -70,7 +77,7 @@ eHySyXvTRNnOoqtl/H7ZGZMpJu/Qn+nJcFl2DECoJSrGBZyzCBhDpw==
         }
 
         [Fact]
-        public void ExportPkcs8PrivateKey_WithPEM_ShouldBeOk()
+        public void ImportPkcs8PrivateKey_WithPEM_ShouldBeOk()
         {
             var rsa = RSA.Create();
             rsa.ImportPrivateKey(RSAKeyType.Pkcs8, @"-----BEGIN PRIVATE KEY-----
@@ -104,7 +111,7 @@ MQB0WkAHcHJ+9np4dlvPxNU=
         }
 
         [Fact]
-        public void ExportXmlPrivateKey_ShouldBeOk()
+        public void ImportXmlPrivateKey_ShouldBeOk()
         {
             var rsa = RSA.Create();
             rsa.ImportPrivateKey(RSAKeyType.Xml, @"<RSAKeyValue>
@@ -120,7 +127,7 @@ MQB0WkAHcHJ+9np4dlvPxNU=
         }
 
         [Fact]
-        public void ExportXmlPrivateKey_ShouldBeExp()
+        public void ImportXmlPrivateKey_ShouldBeExp()
         {
             var rsa = RSA.Create();
             Assert.Throws<Exception>(() => rsa.ImportPrivateKey(RSAKeyType.Xml,

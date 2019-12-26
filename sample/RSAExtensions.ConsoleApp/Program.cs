@@ -8,7 +8,10 @@ namespace RSAExtensions.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var rsa = RSA.Create(512);
+            var rsa = RSA.Create(2048);
+            Console.WriteLine();
+            Console.WriteLine(rsa.ExportPublicKey(RSAKeyType.Pkcs8));
+            Console.WriteLine();
             Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Pkcs1));
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine(rsa.ExportPrivateKey(RSAKeyType.Pkcs1, true));

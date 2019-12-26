@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Security;
 
 namespace RSAExtensions
 {
@@ -54,8 +56,10 @@ namespace RSAExtensions
             switch (type)
             {
                 case RSAKeyType.Pkcs1:
-                case RSAKeyType.Pkcs8:
                     rsa.ImportRSAPublicKey(Convert.FromBase64String(publicKey), out _);
+                    break;
+                case RSAKeyType.Pkcs8:
+                    rsa.ImportPkcs8PublicKey(Convert.FromBase64String(publicKey));
                     break;
                 case RSAKeyType.Xml:
                     rsa.ImportXmlPublicKey(publicKey);
@@ -64,5 +68,17 @@ namespace RSAExtensions
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
+
+        public static void ImportPkcs8PublicKey(this RSA rsa,byte[] publicKey)
+        {
+            RsaKeyParameters publicKeyParam = (RsaKeyParameters)PublicKeyFactory.CreateKey(publicKey);
+            var pub = new RSAParameters
+            {
+                Modulus = publicKeyParam.Modulus.ToByteArrayUnsigned(),
+                Exponent = publicKeyParam.Exponent.ToByteArrayUnsigned()
+            };
+            rsa.ImportParameters(pub);
+        }
     }
+
 }

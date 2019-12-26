@@ -1,5 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Security.Cryptography;
+using System.Text;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Math;
+using Org.BouncyCastle.OpenSsl;
 
 namespace RSAExtensions
 {
@@ -45,7 +50,7 @@ namespace RSAExtensions
             var key = type switch
             {
                 RSAKeyType.Pkcs1 => Convert.ToBase64String(rsa.ExportRSAPublicKey()),
-                RSAKeyType.Pkcs8 => Convert.ToBase64String(rsa.ExportRSAPublicKey()),
+                RSAKeyType.Pkcs8 => Convert.ToBase64String(rsa.ExportPkcs8PublicKey()),
                 RSAKeyType.Xml => rsa.ExportXmlPublicKey(),
                 _ => string.Empty
             };
@@ -56,6 +61,17 @@ namespace RSAExtensions
             }
 
             return key;
+        }
+
+        public static byte[] ExportPkcs8PublicKey(this RSA rsa)
+        {
+            var pub = rsa.ExportParameters(false);
+            RsaKeyParameters rsaKeyParameters = new RsaKeyParameters(false, new BigInteger(1, pub.Modulus), new BigInteger(1, pub.Exponent));
+            StringWriter sw = new StringWriter();
+            PemWriter pWrt = new PemWriter(sw);
+            pWrt.WriteObject(rsaKeyParameters);
+            pWrt.Writer.Close();
+            return Convert.FromBase64String(PemFormatUtil.RemoveFormat(sw.ToString()));
         }
     }
 }
