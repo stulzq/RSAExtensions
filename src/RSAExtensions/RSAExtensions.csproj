@@ -12,8 +12,8 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>stulzq_zhiqiang li_logo.jpg</PackageIcon>
     <PackageIconUrl />
-    <PackageReleaseNotes>Add BigData encrypt and decrypt</PackageReleaseNotes>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Fix pkcs8 public key export and import.</PackageReleaseNotes>
+    <Version>1.0.2</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <!--<DocumentationFile>$(OutDir)\$(MSBuildProjectName).xml</DocumentationFile>-->
