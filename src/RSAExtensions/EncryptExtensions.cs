@@ -50,14 +50,14 @@ namespace RSAExtensions
         public static string DecryptBigData(this RSA rsa, string dataStr, RSAEncryptionPadding padding, char connChar = '$')
         {
             var data = dataStr.Split(connChar, StringSplitOptions.RemoveEmptyEntries);
-            var sb = new StringBuilder();
+            var byteList = new List<byte>();
 
             foreach (var item in data)
             {
-                sb.Append(Encoding.UTF8.GetString(rsa.Decrypt(Convert.FromBase64String(item), padding)));
+                byteList.AddRange(rsa.Decrypt(Convert.FromBase64String(item), padding));
             }
 
-            return sb.ToString();
+            return Encoding.UTF8.GetString(byteList.ToArray());
         }
     }
 }
