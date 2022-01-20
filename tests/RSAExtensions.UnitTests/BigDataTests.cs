@@ -10,7 +10,7 @@ namespace RSAExtensions.UnitTests
         {
             var data = "11111111111111111111111111111111111111111111111111111111111111111111";
 
-            var rsa = RSA.Create(512);
+            var rsa = RSA.Create(1024);
             var encrypt = rsa.EncryptBigData(data,RSAEncryptionPadding.Pkcs1);
             var decrypt = rsa.DecryptBigData(encrypt, RSAEncryptionPadding.Pkcs1);
             Assert.Equal(data, decrypt);
@@ -21,7 +21,7 @@ namespace RSAExtensions.UnitTests
         {
             var data = "11111111111111111111111111111111111111111111111111111111111111111111";
 
-            var rsa = RSA.Create(512);
+            var rsa = RSA.Create(1024);
             var encrypt = rsa.EncryptBigData(data, RSAEncryptionPadding.OaepSHA1);
             var decrypt = rsa.DecryptBigData(encrypt, RSAEncryptionPadding.OaepSHA1);
             Assert.Equal(data, decrypt);
