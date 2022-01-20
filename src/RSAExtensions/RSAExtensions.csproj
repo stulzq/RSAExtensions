@@ -13,7 +13,7 @@
     <PackageIcon>stulzq_zhiqiang li_logo.jpg</PackageIcon>
     <PackageIconUrl />
     <PackageReleaseNotes>Fix big data encryption character byte splitting causes garbled code</PackageReleaseNotes>
-    <Version>1.0.3</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <!--<DocumentationFile>$(OutDir)\$(MSBuildProjectName).xml</DocumentationFile>-->
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Portable.BouncyCastle" Version="1.8.5.2" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
   </ItemGroup>
 
 </Project>
