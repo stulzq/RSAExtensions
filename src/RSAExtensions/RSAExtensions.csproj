@@ -12,7 +12,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>stulzq_zhiqiang li_logo.jpg</PackageIcon>
     <PackageIconUrl />
-    <PackageReleaseNotes>Fix big data encryption character byte splitting causes garbled code</PackageReleaseNotes>
+    <PackageReleaseNotes>Use RecyclableMemoryStreamManager improve big data decrypt.</PackageReleaseNotes>
     <Version>1.1.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
