@@ -13,7 +13,7 @@
     <PackageIcon>stulzq_zhiqiang li_logo.jpg</PackageIcon>
     <PackageIconUrl />
     <PackageReleaseNotes>Fix big data encryption character byte splitting causes garbled code</PackageReleaseNotes>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <!--<DocumentationFile>$(OutDir)\$(MSBuildProjectName).xml</DocumentationFile>-->
