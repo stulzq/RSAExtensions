@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.IO;
 
 namespace RSAExtensions
 {
@@ -15,6 +16,9 @@ namespace RSAExtensions
             [RSAEncryptionPadding.OaepSHA384]=98,
             [RSAEncryptionPadding.OaepSHA512]=130,
         };
+        
+        private static readonly RecyclableMemoryStreamManager MemoryStreamManager = new RecyclableMemoryStreamManager();
+
 
         /// <summary>
         /// 
@@ -50,14 +54,14 @@ namespace RSAExtensions
         public static string DecryptBigData(this RSA rsa, string dataStr, RSAEncryptionPadding padding, char connChar = '$')
         {
             var data = dataStr.Split(connChar, StringSplitOptions.RemoveEmptyEntries);
-            var byteList = new List<byte>();
+            using var ms = MemoryStreamManager.GetStream();
 
             foreach (var item in data)
             {
-                byteList.AddRange(rsa.Decrypt(Convert.FromBase64String(item), padding));
+                ms.Write(rsa.Decrypt(Convert.FromBase64String(item), padding));
             }
 
-            return Encoding.UTF8.GetString(byteList.ToArray());
+            return Encoding.UTF8.GetString(ms.ToArray());
         }
     }
 }
