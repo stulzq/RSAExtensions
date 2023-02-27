@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>stulzq</Authors>
-    <Description>.NET Core &gt;=3.0 &amp; .NET Standard &gt;=2.2, RSA Enhanced Extension. Provide XML format key import and export. Unified export and import of PKCS # 1, PKCS # 8, and XML formats. Supports PKCS # 1, PKCS # 8 PEM import and export.</Description>
-    <Copyright>Copyright 2019 stulzq</Copyright>
+    <Description>.NET Core &gt;=3.0 &amp; .NET Standard &gt;=2.1, RSA Enhanced Extension. Provide XML format key import and export. Unified export and import of PKCS # 1, PKCS # 8, and XML formats. Supports PKCS # 1, PKCS # 8 PEM import and export.</Description>
+    <Copyright>Copyright 2019-2023 stulzq</Copyright>
     <PackageTags>RSA,PEM,XML,PKCS1,PKCS8</PackageTags>
     <PackageProjectUrl>https://github.com/stulzq/RSAExtensions</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
