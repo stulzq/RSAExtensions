@@ -14,6 +14,8 @@
     <PackageIconUrl />
     <PackageReleaseNotes>package update.</PackageReleaseNotes>
     <Version>1.1.2</Version>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <!--<DocumentationFile>$(OutDir)\$(MSBuildProjectName).xml</DocumentationFile>-->
